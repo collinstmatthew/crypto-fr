@@ -1,0 +1,92 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b0ccf012047c515352233faa9d63d00d1af436866e4eb55c0ae6e5e20ef23db9
+
+name:           crypto-fr
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/crypto-fr#readme>
+homepage:       https://github.com/githubuser/crypto-fr#readme
+bug-reports:    https://github.com/githubuser/crypto-fr/issues
+author:         Matthew Collins
+maintainer:     collins.t.matthew@protonmail.com
+copyright:      2020 Matthew Collins
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/crypto-fr
+
+library
+  exposed-modules:
+      Database
+      Events
+      Fees
+      FixedLengthQueue
+      Lib
+      Market
+      Portfolio
+      Strategy
+      Trades
+  other-modules:
+      Paths_crypto_fr
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , haskell-coinbase-pro
+    , sqlite-simple
+    , text
+    , containers
+    , lens
+    , time
+    , array
+    , scientific
+    , reactive-banana
+    , extra
+    , async-timer
+  default-language: Haskell2010
+
+executable crypto-fr-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_crypto_fr
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , crypto-fr
+    , sqlite-simple
+    , haskell-coinbase-pro
+    , text
+    , containers
+    , lens
+    , time
+    , array
+    , scientific
+    , reactive-banana
+    , extra
+    , async-timer
+  default-language: Haskell2010
+
+test-suite crypto-fr-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_crypto_fr
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , crypto-fr
+  default-language: Haskell2010

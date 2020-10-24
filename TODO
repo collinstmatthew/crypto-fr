@@ -1,0 +1,28 @@
+backtesting
+    -- runExchange gets the order from the exchange so I need to return the quote correctly with the correct "time" and price for parsing from historical data
+    -- for the tick and getting the data from the exchange I need to have some artifical time
+
+attach to streaming api instead of rest api
+
+
+ExchangeConf has three types
+Manager, Maybe Token, and ApiType
+
+ApiType can be real | sandbox I should another type which is backtesting and connect to my server
+Token are the credentials for connecting to the api
+
+Manager keeps track of the current open connections
+
+-- behavior I need my coibnase backtest to implement
+
+given an orderId to needs to return the full order details as per
+run_getOrder
+this can obviously only happen after it has actually generated an order i.d in the first place from a trade request
+
+I don't actually need get order list because all trades are executed immediately
+
+
+getBid needs to return the current trade price it uses the system internal clock which will need to change to a artificial one
+
+executeOrder in Strategy is when the order is sent the exchange should at this point take the "artificial order time" and give back an order I.D and store the actual executed trade
+then when run_getOrder is done it then looks up the order ID in the table and returns the executred trade
